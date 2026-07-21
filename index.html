@@ -103,6 +103,18 @@
   .video-feature { max-width: 880px; margin-bottom: 26px; }
   .video-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 22px; max-width: 880px; }
   .vid-label { color: var(--slate); font-size: 13.5px; padding-top: 10px; letter-spacing: .03em; }
+  .paper-card {
+    background: var(--navy-card); border: 1px solid rgba(255,170,29,.35);
+    border-radius: 18px; padding: 34px 30px; max-width: 720px; margin-bottom: 22px;
+  }
+  .paper-badge {
+    display: inline-block; background: var(--amber); color: var(--navy);
+    font-size: 12px; font-weight: 800; letter-spacing: .14em;
+    padding: 6px 14px; border-radius: 99px; margin-bottom: 16px;
+  }
+  .paper-card h3 { font-size: 26px; margin-bottom: 12px; }
+  .paper-card p { color: var(--slate); font-size: 15.5px; }
+  .paper-card .paper-status { margin-top: 16px; color: var(--white); font-weight: 600; }
   .pub-note {
     border: 1.5px dashed rgba(255,255,255,.25); border-radius: 18px;
     padding: 30px; color: var(--slate); max-width: 720px;
@@ -240,11 +252,22 @@
 <section id="publishing">
   <h2 class="band-title">Publishing</h2>
   <p class="band-sub">The method is the product, too.</p>
+  <div class="paper-card">
+    <div class="paper-badge">PAPER 01 &middot; FREE</div>
+    <h3>The Council Method</h3>
+    <p>Stop asking AI one question at a time. The Council Method shows how to convene
+    structured panels of AI experts — a medical board, a legal team, a trading desk, a
+    product studio — that deliberate, challenge each other, and deliver a synthesized
+    recommendation instead of a single guess. The complete method: how to build the
+    personas, structure the deliberation, force real disagreement, and know when to
+    trust the verdict.</p>
+    <p class="paper-status">In progress — free when it releases.
+    <a href="mailto:hello@praxis-hq.ai?subject=Send%20me%20The%20Council%20Method">Get on the list.</a></p>
+  </div>
   <div class="pub-note">
-    <strong>First paper in progress:</strong> how a 30-year roofing expert with zero
+    <strong>Next in the pipeline:</strong> how a 30-year roofing expert with zero
     programming background ships production App Store software by directing AI agents —
-    the honest version, including what broke. Courses to follow. Want it when it lands?
-    <a href="mailto:hello@praxis-hq.ai?subject=Send%20me%20the%20paper">Ask and we'll send it.</a>
+    the honest version, including what broke. Courses to follow.
   </div>
 </section>
 
