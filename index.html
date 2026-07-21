@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Praxis — Theory into practice</title>
+<meta name="description" content="Praxis is an AI-native product studio that turns deep industry expertise into shipped software — apps, automation, and technical publishing.">
+<link rel="icon" type="image/png" href="assets/praxis-logo-monogram-300.png">
+<style>
+  :root {
+    --navy: #122A40; --navy-deep: #0B1B2B; --navy-card: #16324C;
+    --amber: #FFAA1D; --paper: #F7F5F1; --slate: #8FA3B5; --white: #FFFFFF;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: "Avenir Next", Avenir, -apple-system, "Segoe UI", Roboto, sans-serif;
+    background: var(--navy-deep); color: var(--white); line-height: 1.6;
+  }
+  a { color: var(--amber); text-decoration: none; }
+
+  nav {
+    position: sticky; top: 0; z-index: 10;
+    display: flex; align-items: center; gap: 28px;
+    padding: 14px 6vw; background: rgba(11,27,43,.92);
+    backdrop-filter: blur(8px); border-bottom: 1px solid rgba(255,255,255,.08);
+  }
+  nav img { width: 40px; height: 40px; border-radius: 9px; }
+  nav .word { font-weight: 800; letter-spacing: .25em; font-size: 18px; }
+  nav .links { margin-left: auto; display: flex; gap: 24px; }
+  nav .links a { color: var(--slate); font-size: 14px; font-weight: 600; }
+  nav .links a:hover { color: var(--white); }
+
+  .hero {
+    position: relative; overflow: hidden;
+    display: flex; flex-wrap: wrap; align-items: center; justify-content: center;
+    gap: 6vw; padding: 72px 6vw 88px; min-height: 78vh;
+    background: linear-gradient(135deg, var(--navy-deep) 0%, var(--navy) 55%, var(--navy-deep) 100%);
+  }
+  #net { position: absolute; inset: 0; opacity: .5; }
+  .hero-copy { position: relative; max-width: 560px; }
+  .kicker { color: var(--amber); font-weight: 700; letter-spacing: .22em; font-size: 13px; }
+  h1 { font-size: clamp(38px, 5.2vw, 64px); font-weight: 800; line-height: 1.08; margin: 14px 0 20px; }
+  h1 .accent { color: var(--amber); }
+  .lede { color: var(--slate); font-size: 18px; max-width: 52ch; }
+  .cta-row { margin-top: 32px; display: flex; gap: 14px; flex-wrap: wrap; }
+  .btn {
+    display: inline-block; padding: 14px 26px; border-radius: 12px;
+    font-weight: 700; font-size: 15px;
+  }
+  .btn.primary { background: var(--amber); color: var(--navy); }
+  .btn.ghost { border: 2px solid rgba(255,255,255,.25); color: var(--white); }
+  .btn:hover { transform: translateY(-1px); }
+
+  .phone {
+    position: relative; width: min(300px, 74vw); border-radius: 42px;
+    padding: 12px; background: #0a141f;
+    border: 1px solid rgba(255,255,255,.14);
+    box-shadow: 0 30px 80px rgba(0,0,0,.5);
+  }
+  .phone video { width: 100%; display: block; border-radius: 32px; }
+  .phone .caption {
+    text-align: center; color: var(--slate); font-size: 12.5px;
+    padding: 10px 4px 4px; letter-spacing: .04em;
+  }
+
+  section { padding: 84px 6vw; }
+  .band-title { font-size: clamp(26px, 3.2vw, 38px); font-weight: 800; margin-bottom: 10px; }
+  .band-sub { color: var(--slate); max-width: 66ch; margin-bottom: 44px; }
+
+  .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 22px; }
+  .card {
+    background: var(--navy-card); border: 1px solid rgba(255,255,255,.08);
+    border-radius: 18px; padding: 30px 26px;
+  }
+  .card svg { width: 44px; height: 44px; margin-bottom: 16px; }
+  .card h3 { font-size: 19px; margin-bottom: 8px; }
+  .card p { color: var(--slate); font-size: 15px; }
+
+  .light { background: var(--paper); color: var(--navy); }
+  .light .band-sub { color: #5c6b78; }
+  .product {
+    display: flex; flex-wrap: wrap; gap: 5vw; align-items: center;
+    background: var(--white); border-radius: 22px; padding: 40px;
+    box-shadow: 0 18px 50px rgba(18,42,64,.12); margin-bottom: 28px;
+  }
+  .product img.shot { width: min(240px, 60vw); border-radius: 18px; box-shadow: 0 12px 34px rgba(18,42,64,.25); }
+  .product .info { flex: 1; min-width: 260px; }
+  .product h3 { font-size: 24px; margin-bottom: 6px; }
+  .product .status { display: inline-block; font-size: 12px; font-weight: 800; letter-spacing: .12em;
+    padding: 5px 12px; border-radius: 99px; margin-bottom: 14px; }
+  .status.live { background: #E8F6EC; color: #1E7B3C; }
+  .status.dev { background: #FFF3DC; color: #9A6B00; }
+  .product p { color: #4a5a68; font-size: 15.5px; }
+  .product .links-row { margin-top: 18px; display: flex; gap: 18px; align-items: center; flex-wrap: wrap; }
+  .product .links-row a { font-weight: 700; }
+
+  .video-feature video, .video-cell video {
+    width: 100%; display: block; border-radius: 16px;
+    border: 1px solid rgba(255,255,255,.1);
+    background: #000;
+  }
+  .video-feature { max-width: 880px; margin-bottom: 26px; }
+  .video-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 22px; max-width: 880px; }
+  .vid-label { color: var(--slate); font-size: 13.5px; padding-top: 10px; letter-spacing: .03em; }
+  .pub-note {
+    border: 1.5px dashed rgba(255,255,255,.25); border-radius: 18px;
+    padding: 30px; color: var(--slate); max-width: 720px;
+  }
+  .pub-note strong { color: var(--white); }
+
+  footer {
+    padding: 48px 6vw; border-top: 1px solid rgba(255,255,255,.08);
+    display: flex; flex-wrap: wrap; gap: 18px; align-items: center; justify-content: space-between;
+    color: var(--slate); font-size: 14px;
+  }
+  footer .fbrand { display: flex; align-items: center; gap: 12px; font-weight: 800; letter-spacing: .2em; color: var(--white); }
+  footer img { width: 30px; height: 30px; border-radius: 7px; }
+  @media (max-width: 640px) { nav .links { display: none; } }
+</style>
+</head>
+<body>
+
+<nav>
+  <img src="assets/praxis-logo-monogram-300.png" alt="Praxis logo">
+  <span class="word">PRAXIS</span>
+  <span class="links">
+    <a href="#what">What we do</a>
+    <a href="#watch">Watch</a>
+    <a href="#products">Products</a>
+    <a href="#publishing">Publishing</a>
+    <a href="#contact">Contact</a>
+  </span>
+</nav>
+
+<div class="hero">
+  <canvas id="net"></canvas>
+  <div class="hero-copy">
+    <div class="kicker">AI-NATIVE PRODUCT STUDIO</div>
+    <h1>Theory into <span class="accent">practice.</span></h1>
+    <p class="lede">Praxis builds working software where others build slide decks.
+    Decades of real-world industry expertise, AI-augmented engineering, and every
+    release shipped by someone who has actually done the work the software supports.</p>
+    <div class="cta-row">
+      <a class="btn primary" href="#products">See it live</a>
+      <a class="btn ghost" href="#contact">Get in touch</a>
+    </div>
+  </div>
+  <div class="phone">
+    <video src="assets/demo.mp4" autoplay muted loop playsinline></video>
+    <div class="caption">Roofing Expert — live on the App Store</div>
+  </div>
+</div>
+
+<section id="what">
+  <h2 class="band-title">What we do</h2>
+  <p class="band-sub">The people who understand an industry's problems best are almost
+  never the people building its software. Praxis closes that gap — one vertical at a time.</p>
+  <div class="cards">
+    <div class="card">
+      <svg viewBox="0 0 44 44" fill="none" stroke="#FFAA1D" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="22" cy="22" r="4.5"/><circle cx="7" cy="10" r="3"/><circle cx="37" cy="10" r="3"/>
+        <circle cx="7" cy="34" r="3"/><circle cx="37" cy="34" r="3"/>
+        <path d="M18.5 19.5 9.5 12M25.5 19.5l9-7.5M18.5 24.5l-9 7.5M25.5 24.5l9 7.5"/>
+      </svg>
+      <h3>AI Automation</h3>
+      <p>Custom AI-agent workflows that turn hard-won expertise into working systems —
+      document generation, field-data capture, claims-grade reporting, and back-office
+      automation that kills the phone-call chase.</p>
+    </div>
+    <div class="card">
+      <svg viewBox="0 0 44 44" fill="none" stroke="#FFAA1D" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="12" y="4" width="20" height="36" rx="4.5"/><path d="M19 36h6"/>
+      </svg>
+      <h3>App Creation</h3>
+      <p>Native Apple-platform apps — iPhone, iPad, Apple Watch, Mac — taken end to end:
+      product design, development, App Store publication, and subscription operations.</p>
+    </div>
+    <div class="card">
+      <svg viewBox="0 0 44 44" fill="none" stroke="#FFAA1D" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M8 8h18a6 6 0 0 1 6 6v22H14a6 6 0 0 1-6-6V8Z"/><path d="M14 16h11M14 22h11M14 28h7"/>
+      </svg>
+      <h3>Technical Publishing</h3>
+      <p>Courses and papers documenting the method itself — how domain experts ship real
+      software with AI, and how specialized trade knowledge becomes a product.</p>
+    </div>
+  </div>
+</section>
+
+<section id="watch">
+  <h2 class="band-title">See it in action</h2>
+  <p class="band-sub">Real software, really shipping. Watch the suite work.</p>
+  <div class="video-feature">
+    <video src="assets/claims-suite-demo.mp4" controls preload="metadata"></video>
+    <div class="vid-label">The Praxis Claims Suite — full walkthrough (90 s)</div>
+  </div>
+  <div class="video-row">
+    <div class="video-cell">
+      <video src="assets/roofing-expert-solo.mp4" controls preload="metadata"></video>
+      <div class="vid-label">Roofing Expert — field inspection to carrier-ready PDF</div>
+    </div>
+    <div class="video-cell">
+      <video src="assets/losslist-claimforge.mp4" controls preload="metadata"></video>
+      <div class="vid-label">LossList + ClaimForge — the claim, organized and forged</div>
+    </div>
+  </div>
+</section>
+
+<section class="light" id="products">
+  <h2 class="band-title">Products</h2>
+  <p class="band-sub">Built on lived expertise, shipped to real users. This is the proof.</p>
+
+  <div class="product">
+    <img class="shot" src="assets/01-slope-damage-counters.png" alt="Roofing Expert slope damage screen">
+    <div class="info">
+      <h3>Roofing Expert</h3>
+      <span class="status live">LIVE ON THE APP STORE</span>
+      <p>Professional insurance roof inspections without the paper form: glove-friendly
+      slope-by-slope damage capture, GPS-stamped photo evidence, storm-weather corroboration,
+      smart deductible math, and a carrier-ready branded PDF — on iPhone, iPad, Apple Watch,
+      and Mac. Built on 30 years of roofing and claims experience.</p>
+      <div class="links-row">
+        <a href="https://apps.apple.com/us/app/roofing-expert-roof-reports/id6788229872" target="_blank" rel="noopener">Download on the App Store →</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="product">
+    <img class="shot" src="assets/05-pdf-preview.png" alt="Claims report document preview">
+    <div class="info">
+      <h3>LossList + ClaimForge</h3>
+      <span class="status dev">IN DEVELOPMENT</span>
+      <p>The rest of the claim: LossList organizes the loss — every damaged item, document,
+      and deadline in one place — and ClaimForge turns it into a sealed, evidence-complete
+      claim package. One claim, three apps, zero re-keying.</p>
+    </div>
+  </div>
+</section>
+
+<section id="publishing">
+  <h2 class="band-title">Publishing</h2>
+  <p class="band-sub">The method is the product, too.</p>
+  <div class="pub-note">
+    <strong>First paper in progress:</strong> how a 30-year roofing expert with zero
+    programming background ships production App Store software by directing AI agents —
+    the honest version, including what broke. Courses to follow. Want it when it lands?
+    <a href="mailto:hello@praxis-hq.ai?subject=Send%20me%20the%20paper">Ask and we'll send it.</a>
+  </div>
+</section>
+
+<section class="light" id="contact">
+  <h2 class="band-title">Contact</h2>
+  <p class="band-sub">Praxis LLC · Orlando, Florida — founded and run by Adam Fischer.
+  If your industry's software is still a filing cabinet and a prayer, let's talk.</p>
+  <a class="btn primary" href="mailto:hello@praxis-hq.ai">hello@praxis-hq.ai</a>
+</section>
+
+<footer>
+  <span class="fbrand"><img src="assets/praxis-logo-monogram-300.png" alt=""> PRAXIS</span>
+  <span>© 2026 Praxis LLC · Orlando, FL · Theory into practice.</span>
+</footer>
+
+<script>
+// Hero network animation — the brand constellation, drifting gently.
+const cv = document.getElementById('net'), cx = cv.getContext('2d');
+let nodes = [];
+function sizeCanvas() {
+  cv.width = cv.offsetWidth * devicePixelRatio;
+  cv.height = cv.offsetHeight * devicePixelRatio;
+  if (!nodes.length) {
+    for (let i = 0; i < 26; i++) nodes.push({
+      x: Math.random(), y: Math.random(),
+      vx: (Math.random() - .5) * .0006, vy: (Math.random() - .5) * .0006
+    });
+  }
+}
+sizeCanvas(); addEventListener('resize', sizeCanvas);
+(function tick() {
+  cx.clearRect(0, 0, cv.width, cv.height);
+  const W = cv.width, H = cv.height;
+  for (const n of nodes) {
+    n.x += n.vx; n.y += n.vy;
+    if (n.x < 0 || n.x > 1) n.vx *= -1;
+    if (n.y < 0 || n.y > 1) n.vy *= -1;
+  }
+  for (let i = 0; i < nodes.length; i++) {
+    for (let j = i + 1; j < nodes.length; j++) {
+      const a = nodes[i], b = nodes[j];
+      const d = Math.hypot(a.x - b.x, a.y - b.y);
+      if (d < .22) {
+        cx.strokeStyle = `rgba(255,170,29,${(1 - d / .22) * .28})`;
+        cx.lineWidth = devicePixelRatio;
+        cx.beginPath(); cx.moveTo(a.x * W, a.y * H); cx.lineTo(b.x * W, b.y * H); cx.stroke();
+      }
+    }
+  }
+  for (const n of nodes) {
+    cx.fillStyle = 'rgba(255,170,29,.75)';
+    cx.beginPath(); cx.arc(n.x * W, n.y * H, 2.2 * devicePixelRatio, 0, 7); cx.fill();
+  }
+  requestAnimationFrame(tick);
+})();
+</script>
+</body>
+</html>
