@@ -26,8 +26,20 @@
   }
   nav img { width: 40px; height: 40px; border-radius: 9px; }
   nav .word { font-weight: 800; letter-spacing: .25em; font-size: 18px; }
-  nav .back { margin-left: auto; color: var(--slate); font-size: 14px; font-weight: 600; }
-  nav .back:hover { color: var(--white); }
+  nav .links { margin-left: auto; display: flex; gap: 24px; }
+  nav .links a { color: var(--slate); font-size: 14px; font-weight: 600; }
+  nav .links a:hover, nav .links a.on { color: var(--white); }
+  @media (max-width: 640px) {
+    nav { flex-wrap: wrap; gap: 8px 14px; }
+    nav img { width: 32px; height: 32px; }
+    nav .word { font-size: 16px; }
+    nav .links {
+      margin-left: 0; width: 100%; overflow-x: auto; gap: 18px;
+      -webkit-overflow-scrolling: touch; scrollbar-width: none; padding-bottom: 2px;
+    }
+    nav .links::-webkit-scrollbar { display: none; }
+    nav .links a { white-space: nowrap; font-size: 13px; }
+  }
 
   header.page { padding: 64px 6vw 24px; }
   h1 { font-size: clamp(32px, 4.5vw, 52px); font-weight: 800; }
@@ -74,7 +86,14 @@
 <nav>
   <img src="../assets/praxis-logo-monogram-300.png" alt="Praxis logo">
   <span class="word">PRAXIS</span>
-  <a class="back" href="../index.html">&larr; Back to praxis-hq.ai</a>
+  <span class="links">
+    <a href="../index.html">Home</a>
+    <a href="../products/">Products</a>
+    <a href="../consulting/">Consulting</a>
+    <a href="./" class="on">Publishing</a>
+    <a href="../team/">Team</a>
+    <a href="../index.html#contact">Contact</a>
+  </span>
 </nav>
 
 <header class="page">

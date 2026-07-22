@@ -4,7 +4,13 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Praxis — Theory into practice</title>
-<meta name="description" content="Praxis is an AI-native product studio that turns deep industry expertise into shipped software — apps, automation, and technical publishing.">
+<meta name="description" content="Praxis is an AI-native product studio: apps, AI automation, data sovereignty, and technical publishing. Build with AI without surrendering your data.">
+<meta property="og:title" content="Praxis — Theory into practice">
+<meta property="og:description" content="AI-native product studio: apps, AI automation, data sovereignty, and technical publishing.">
+<meta property="og:image" content="https://praxis-hq.ai/assets/praxis-og.png">
+<meta property="og:url" content="https://praxis-hq.ai/">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="icon" type="image/png" href="assets/praxis-logo-monogram-300.png">
 <style>
   :root {
@@ -18,9 +24,8 @@
     background: var(--navy-deep); color: var(--white); line-height: 1.6;
   }
   a { color: var(--amber); text-decoration: none; }
-
-  /* Content column centers on wide screens instead of hugging the left */
   nav, section, footer, .hero { padding-inline: max(6vw, calc((100vw - 1240px) / 2)) !important; }
+
   nav {
     position: sticky; top: 0; z-index: 10;
     display: flex; align-items: center; gap: 28px;
@@ -32,11 +37,22 @@
   nav .links { margin-left: auto; display: flex; gap: 24px; }
   nav .links a { color: var(--slate); font-size: 14px; font-weight: 600; }
   nav .links a:hover { color: var(--white); }
+  @media (max-width: 640px) {
+    nav { flex-wrap: wrap; gap: 8px 14px; }
+    nav img { width: 32px; height: 32px; }
+    nav .word { font-size: 16px; }
+    nav .links {
+      margin-left: 0; width: 100%; overflow-x: auto; gap: 18px;
+      -webkit-overflow-scrolling: touch; scrollbar-width: none; padding-bottom: 2px;
+    }
+    nav .links::-webkit-scrollbar { display: none; }
+    nav .links a { white-space: nowrap; font-size: 13px; }
+  }
 
   .hero {
     position: relative; overflow: hidden;
     display: flex; flex-wrap: wrap; align-items: center; justify-content: center;
-    gap: 6vw; padding: 72px 6vw 88px; min-height: 78vh;
+    gap: 6vw; padding: 72px 6vw 88px; min-height: 72vh;
     background: linear-gradient(135deg, var(--navy-deep) 0%, var(--navy) 55%, var(--navy-deep) 100%);
   }
   #net { position: absolute; inset: 0; opacity: .5; }
@@ -66,6 +82,15 @@
     padding: 10px 4px 4px; letter-spacing: .04em;
   }
 
+  .stats {
+    display: flex; flex-wrap: wrap; gap: 18px 44px; justify-content: center;
+    padding-top: 34px; padding-bottom: 34px;
+    background: var(--navy-card); border-block: 1px solid rgba(255,255,255,.08);
+  }
+  .stat { text-align: center; }
+  .stat .n { font-size: 30px; font-weight: 800; color: var(--amber); }
+  .stat .l { font-size: 12px; font-weight: 700; letter-spacing: .12em; color: var(--slate); }
+
   section { padding: 84px 6vw; }
   .band-title { font-size: clamp(26px, 3.2vw, 38px); font-weight: 800; margin-bottom: 10px; }
   .band-sub { color: var(--slate); max-width: 66ch; margin-bottom: 44px; }
@@ -84,55 +109,35 @@
   .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 22px; }
   .card {
     background: var(--navy-card); border: 1px solid rgba(255,255,255,.08);
-    border-radius: 18px; padding: 30px 26px;
+    border-radius: 18px; padding: 30px 26px; display: block; color: var(--white);
+    transition: border-color .15s ease;
   }
+  .card:hover { border-color: rgba(255,170,29,.5); }
   .card svg { width: 44px; height: 44px; margin-bottom: 16px; }
   .card h3 { font-size: 19px; margin-bottom: 8px; }
   .card p { color: var(--slate); font-size: 15px; }
+  .card .more { display: inline-block; margin-top: 14px; font-weight: 700; font-size: 14px; color: var(--amber); }
+
+  .founder {
+    background: var(--paper); color: var(--navy);
+    display: flex; flex-wrap: wrap; gap: 40px; align-items: center;
+  }
+  .founder img { width: 168px; height: 168px; border-radius: 50%; box-shadow: 0 12px 34px rgba(18,42,64,.25); }
+  .founder .info { flex: 1; min-width: 280px; max-width: 720px; }
+  .founder h2 { font-size: 26px; margin-bottom: 4px; }
+  .founder .role { color: #9A6B00; font-weight: 700; letter-spacing: .1em; font-size: 13px; margin-bottom: 14px; }
+  .founder p { color: #4a5a68; font-size: 16px; margin-bottom: 12px; }
+  .founder a.card-link { font-weight: 700; }
+
+  .capture {
+    text-align: center; background: var(--navy);
+    border-block: 1px solid rgba(255,255,255,.08);
+  }
+  .capture h2 { font-size: clamp(24px, 3vw, 34px); font-weight: 800; margin-bottom: 10px; }
+  .capture p { color: var(--slate); max-width: 58ch; margin: 0 auto 26px; }
 
   .light { background: var(--paper); color: var(--navy); }
   .light .band-sub { color: #5c6b78; }
-  .product {
-    display: flex; flex-wrap: wrap; gap: 5vw; align-items: center;
-    background: var(--white); border-radius: 22px; padding: 40px;
-    box-shadow: 0 18px 50px rgba(18,42,64,.12); margin-bottom: 28px;
-  }
-  .product img.shot { width: min(240px, 60vw); border-radius: 18px; box-shadow: 0 12px 34px rgba(18,42,64,.25); }
-  .product .info { flex: 1; min-width: 260px; }
-  .product h3 { font-size: 24px; margin-bottom: 6px; }
-  .product .status { display: inline-block; font-size: 12px; font-weight: 800; letter-spacing: .12em;
-    padding: 5px 12px; border-radius: 99px; margin-bottom: 14px; }
-  .status.live { background: #E8F6EC; color: #1E7B3C; }
-  .status.dev { background: #FFF3DC; color: #9A6B00; }
-  .product p { color: #4a5a68; font-size: 15.5px; }
-  .product .links-row { margin-top: 18px; display: flex; gap: 18px; align-items: center; flex-wrap: wrap; }
-  .product .links-row a { font-weight: 700; }
-
-  .video-feature video, .video-cell video {
-    width: 100%; display: block; border-radius: 16px;
-    border: 1px solid rgba(255,255,255,.1);
-    background: #000;
-  }
-  .video-feature { max-width: 880px; margin-bottom: 26px; }
-  .video-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 22px; max-width: 880px; }
-  .vid-label { color: var(--slate); font-size: 13.5px; padding-top: 10px; letter-spacing: .03em; }
-  .paper-card {
-    background: var(--navy-card); border: 1px solid rgba(255,170,29,.35);
-    border-radius: 18px; padding: 34px 30px; max-width: 720px; margin-bottom: 22px;
-  }
-  .paper-badge {
-    display: inline-block; background: var(--amber); color: var(--navy);
-    font-size: 12px; font-weight: 800; letter-spacing: .14em;
-    padding: 6px 14px; border-radius: 99px; margin-bottom: 16px;
-  }
-  .paper-card h3 { font-size: 26px; margin-bottom: 12px; }
-  .paper-card p { color: var(--slate); font-size: 15.5px; }
-  .paper-card .paper-status { margin-top: 16px; color: var(--white); font-weight: 600; }
-  .pub-note {
-    border: 1.5px dashed rgba(255,255,255,.25); border-radius: 18px;
-    padding: 30px; color: var(--slate); max-width: 720px;
-  }
-  .pub-note strong { color: var(--white); }
 
   footer {
     padding: 48px 6vw; border-top: 1px solid rgba(255,255,255,.08);
@@ -141,17 +146,6 @@
   }
   footer .fbrand { display: flex; align-items: center; gap: 12px; font-weight: 800; letter-spacing: .2em; color: var(--white); }
   footer img { width: 30px; height: 30px; border-radius: 7px; }
-  @media (max-width: 640px) {
-    nav { flex-wrap: wrap; gap: 8px 14px; }
-    nav img { width: 32px; height: 32px; }
-    nav .word { font-size: 16px; }
-    nav .links {
-      margin-left: 0; width: 100%; overflow-x: auto; gap: 18px;
-      -webkit-overflow-scrolling: touch; scrollbar-width: none; padding-bottom: 2px;
-    }
-    nav .links::-webkit-scrollbar { display: none; }
-    nav .links a { white-space: nowrap; font-size: 13px; }
-  }
 </style>
 </head>
 <body>
@@ -161,10 +155,10 @@
   <span class="word">PRAXIS</span>
   <span class="links">
     <a href="#mission">Mission</a>
-    <a href="#what">What we do</a>
-    <a href="#watch">Watch</a>
-    <a href="#products">Products</a>
-    <a href="#publishing">Publishing</a>
+    <a href="products/">Products</a>
+    <a href="consulting/">Consulting</a>
+    <a href="papers/">Publishing</a>
+    <a href="team/">Team</a>
     <a href="#contact">Contact</a>
   </span>
 </nav>
@@ -178,14 +172,21 @@
     use AI to build like a funded team — without surrendering your data, your methods,
     or your customers to someone else's platform.</p>
     <div class="cta-row">
-      <a class="btn primary" href="#products">See it live</a>
-      <a class="btn ghost" href="#contact">Get in touch</a>
+      <a class="btn primary" href="products/">Explore the products</a>
+      <a class="btn ghost" href="consulting/">Book an exposure audit</a>
     </div>
   </div>
   <div class="phone">
     <video id="herovid" poster="assets/hero-poster.jpg" muted loop playsinline preload="none"></video>
     <div class="caption">Roofing Expert — live on the App Store</div>
   </div>
+</div>
+
+<div class="stats">
+  <div class="stat"><div class="n">1</div><div class="l">APP LIVE ON THE APP STORE</div></div>
+  <div class="stat"><div class="n">2</div><div class="l">MORE IN DEVELOPMENT</div></div>
+  <div class="stat"><div class="n">8</div><div class="l">PAPERS PUBLISHED</div></div>
+  <div class="stat"><div class="n">$0</div><div class="l">RAISED — BY DESIGN</div></div>
 </div>
 
 <section class="mission" id="mission">
@@ -217,110 +218,55 @@
   <p class="band-sub">The people who understand an industry's problems best are almost
   never the people building its software. Praxis closes that gap — one vertical at a time.</p>
   <div class="cards">
-    <div class="card">
-      <svg viewBox="0 0 44 44" fill="none" stroke="#FFAA1D" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
-        <circle cx="22" cy="22" r="4.5"/><circle cx="7" cy="10" r="3"/><circle cx="37" cy="10" r="3"/>
-        <circle cx="7" cy="34" r="3"/><circle cx="37" cy="34" r="3"/>
-        <path d="M18.5 19.5 9.5 12M25.5 19.5l9-7.5M18.5 24.5l-9 7.5M25.5 24.5l9 7.5"/>
-      </svg>
-      <h3>AI Automation</h3>
-      <p>Custom AI-agent workflows that turn hard-won expertise into working systems —
-      document generation, field-data capture, claims-grade reporting, and back-office
-      automation that kills the phone-call chase.</p>
-    </div>
-    <div class="card">
+    <a class="card" href="products/">
       <svg viewBox="0 0 44 44" fill="none" stroke="#FFAA1D" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
         <rect x="12" y="4" width="20" height="36" rx="4.5"/><path d="M19 36h6"/>
       </svg>
-      <h3>App Creation</h3>
-      <p>Native Apple-platform apps — iPhone, iPad, Apple Watch, Mac — taken end to end:
-      product design, development, App Store publication, and subscription operations.</p>
-    </div>
-    <div class="card">
+      <h3>Products</h3>
+      <p>Native Apple-platform apps built end to end — the claims suite: LossList,
+      Roofing Expert, and ClaimForge. One claim, three apps, zero re-keying.</p>
+      <span class="more">See the suite &rarr;</span>
+    </a>
+    <a class="card" href="consulting/">
+      <svg viewBox="0 0 44 44" fill="none" stroke="#FFAA1D" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M7 26 22 6l15 20-15 12L7 26Z"/><circle cx="22" cy="24" r="4"/>
+      </svg>
+      <h3>Consulting</h3>
+      <p>The Digital Exposure Audit: find what's publicly discoverable about you or
+      your clients, scored by real-world risk — then make it go away and keep it gone.</p>
+      <span class="more">The service &rarr;</span>
+    </a>
+    <a class="card" href="papers/">
       <svg viewBox="0 0 44 44" fill="none" stroke="#FFAA1D" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
         <path d="M8 8h18a6 6 0 0 1 6 6v22H14a6 6 0 0 1-6-6V8Z"/><path d="M14 16h11M14 22h11M14 28h7"/>
       </svg>
-      <h3>Technical Publishing</h3>
-      <p>Courses and papers documenting the method itself — how domain experts ship real
-      software with AI, and how specialized trade knowledge becomes a product.</p>
-    </div>
+      <h3>Publishing</h3>
+      <p>Eight practical build-along guides across two series — councils, skills,
+      context, and the sovereignty playbooks. Volume one is free.</p>
+      <span class="more">Browse the library &rarr;</span>
+    </a>
   </div>
 </section>
 
-<section id="watch">
-  <h2 class="band-title">See it in action</h2>
-  <p class="band-sub">Real software, really shipping. Watch the suite work.</p>
-  <div class="video-feature">
-    <video src="assets/claims-suite-demo.mp4" controls preload="none" poster="assets/poster-suite.jpg"></video>
-    <div class="vid-label">The Praxis Claims Suite — full walkthrough (90 s)</div>
-  </div>
-  <div class="video-row">
-    <div class="video-cell">
-      <video src="assets/roofing-expert-solo.mp4" controls preload="none" poster="assets/poster-roofing.jpg"></video>
-      <div class="vid-label">Roofing Expert — field inspection to carrier-ready PDF</div>
-    </div>
-    <div class="video-cell">
-      <video src="assets/losslist-claimforge.mp4" controls preload="none" poster="assets/poster-losslist.jpg"></video>
-      <div class="vid-label">LossList + ClaimForge — the claim, organized and forged</div>
-    </div>
+<section class="founder" id="founder">
+  <img src="assets/founder-avatar.png" alt="Adam Fischer">
+  <div class="info">
+    <h2>Adam Fischer</h2>
+    <div class="role">FOUNDER &amp; COO</div>
+    <p>Thirty years in tech operations, then eight more on roofs and in the
+    insurance-claims trenches. Praxis is what happened when he stopped waiting for
+    someone else to build the software those worlds needed — and started directing
+    AI agents the way other founders direct engineering teams. Every product on
+    this site shipped that way.</p>
+    <p><a class="card-link" href="team/">Meet the team &rarr;</a></p>
   </div>
 </section>
 
-<section class="light" id="products">
-  <h2 class="band-title">Products</h2>
-  <p class="band-sub">Built on lived expertise, shipped to real users. This is the proof.</p>
-
-  <div class="product">
-    <img class="shot" src="assets/01-slope-damage-counters.png" alt="Roofing Expert slope damage screen">
-    <div class="info">
-      <h3>Roofing Expert</h3>
-      <span class="status live">LIVE ON THE APP STORE</span>
-      <p>Professional insurance roof inspections without the paper form: glove-friendly
-      slope-by-slope damage capture, GPS-stamped photo evidence, storm-weather corroboration,
-      smart deductible math, and a carrier-ready branded PDF — on iPhone, iPad, Apple Watch,
-      and Mac. Built on eight years of hands-on roofing and claims work — backed by
-      three decades in tech.</p>
-      <div class="links-row">
-        <a href="https://apps.apple.com/us/app/roofing-expert-roof-reports/id6788229872" target="_blank" rel="noopener">Download on the App Store →</a>
-      </div>
-    </div>
-  </div>
-
-  <div class="product">
-    <img class="shot" src="assets/05-pdf-preview.png" alt="Claims report document preview">
-    <div class="info">
-      <h3>LossList + ClaimForge</h3>
-      <span class="status dev">IN DEVELOPMENT</span>
-      <p>The rest of the claim: LossList organizes the loss — every damaged item, document,
-      and deadline in one place — and ClaimForge turns it into a sealed, evidence-complete
-      claim package. One claim, three apps, zero re-keying.</p>
-    </div>
-  </div>
-</section>
-
-<section id="publishing">
-  <h2 class="band-title">Publishing</h2>
-  <p class="band-sub">The method is the product, too.</p>
-  <div class="paper-card">
-    <div class="paper-badge">PAPER 01 &middot; FREE</div>
-    <h3>The Council Method</h3>
-    <p>Stop asking AI one question at a time. The Council Method shows how to convene
-    structured panels of AI experts — a medical board, a legal team, a trading desk, a
-    product studio — that deliberate, challenge each other, and deliver a synthesized
-    recommendation instead of a single guess. The complete method: how to build the
-    personas, structure the deliberation, force real disagreement, and know when to
-    trust the verdict.</p>
-    <p class="paper-status">Out now, and free.
-    <a href="papers/the-council-method.pdf" download>Download the PDF</a> &middot;
-    <a href="papers/">Browse the full library &rarr;</a></p>
-  </div>
-  <div class="pub-note">
-    <strong>The library:</strong> eight practical build-along guides across two series —
-    <em>Advanced AI Prompting</em> (councils, skills, context, second opinions, career
-    boards) and <em>The Sovereignty Series</em> (your data, your machine, your rules).
-    Volume one is free; the rest are a few dollars each.
-    <a href="papers/">See all eight &rarr;</a>
-  </div>
+<section class="capture">
+  <h2>New papers, straight to your inbox.</h2>
+  <p>Follow Praxis on Gumroad and every new release — papers, guides, and the
+  occasional free drop — lands in your email. No spam, no algorithm, unsubscribe anytime.</p>
+  <a class="btn primary" href="https://fischertide0857.gumroad.com" target="_blank" rel="noopener">Follow on Gumroad</a>
 </section>
 
 <section class="light" id="contact">
@@ -336,8 +282,6 @@
 </footer>
 
 <script>
-// Hero demo: crisp poster paints instantly; the HD video loads after the page
-// is up, then fades in and loops.
 addEventListener('load', () => {
   const v = document.getElementById('herovid');
   v.src = 'assets/demo-hd.m4v';
@@ -345,7 +289,6 @@ addEventListener('load', () => {
   v.addEventListener('canplay', () => v.play().catch(() => {}), { once: true });
 });
 
-// Hero network animation — the brand constellation, drifting gently.
 const cv = document.getElementById('net'), cx = cv.getContext('2d');
 let nodes = [];
 function sizeCanvas() {

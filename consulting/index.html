@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Consulting — The Digital Exposure Audit — Praxis</title>
+<meta name="description" content="The Praxis Digital Exposure Audit: find what's publicly discoverable about you or your clients, scored by real-world risk — then make it go away and keep it gone.">
+<meta property="og:title" content="The Digital Exposure Audit — Praxis">
+<meta property="og:description" content="Find what's publicly discoverable about you or your clients, scored by real-world risk — then make it go away and keep it gone.">
+<meta property="og:image" content="https://praxis-hq.ai/assets/praxis-og.png">
+<meta property="og:url" content="https://praxis-hq.ai/consulting/">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/png" href="../assets/praxis-logo-monogram-300.png">
+<style>
+  :root {
+    --navy: #122A40; --navy-deep: #0B1B2B; --navy-card: #16324C;
+    --amber: #FFAA1D; --paper: #F7F5F1; --slate: #8FA3B5; --white: #FFFFFF;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: "Avenir Next", Avenir, -apple-system, "Segoe UI", Roboto, sans-serif;
+    background: var(--navy-deep); color: var(--white); line-height: 1.6;
+  }
+  a { color: var(--amber); text-decoration: none; }
+  nav, section, footer, header.page { padding-inline: max(6vw, calc((100vw - 1240px) / 2)) !important; }
+  nav {
+    position: sticky; top: 0; z-index: 10;
+    display: flex; align-items: center; gap: 28px;
+    padding: 14px 6vw; background: rgba(11,27,43,.92);
+    backdrop-filter: blur(8px); border-bottom: 1px solid rgba(255,255,255,.08);
+  }
+  nav img { width: 40px; height: 40px; border-radius: 9px; }
+  nav .word { font-weight: 800; letter-spacing: .25em; font-size: 18px; }
+  nav .links { margin-left: auto; display: flex; gap: 24px; }
+  nav .links a { color: var(--slate); font-size: 14px; font-weight: 600; }
+  nav .links a:hover, nav .links a.on { color: var(--white); }
+  @media (max-width: 640px) {
+    nav { flex-wrap: wrap; gap: 8px 14px; }
+    nav img { width: 32px; height: 32px; }
+    nav .word { font-size: 16px; }
+    nav .links {
+      margin-left: 0; width: 100%; overflow-x: auto; gap: 18px;
+      -webkit-overflow-scrolling: touch; scrollbar-width: none; padding-bottom: 2px;
+    }
+    nav .links::-webkit-scrollbar { display: none; }
+    nav .links a { white-space: nowrap; font-size: 13px; }
+  }
+  header.page { padding: 64px 6vw 20px; }
+  .kicker { color: var(--amber); font-weight: 700; letter-spacing: .22em; font-size: 13px; margin-bottom: 12px; }
+  h1 { font-size: clamp(30px, 4.2vw, 50px); font-weight: 800; line-height: 1.12; }
+  .sub { color: var(--slate); max-width: 68ch; margin-top: 14px; font-size: 17px; }
+  section { padding: 54px 6vw 64px; }
+  .band-title { font-size: clamp(24px, 3vw, 34px); font-weight: 800; margin-bottom: 10px; }
+  .band-sub { color: var(--slate); max-width: 68ch; margin-bottom: 36px; }
+
+  .tiers { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 22px; max-width: 980px; }
+  .tier {
+    background: var(--navy-card); border: 1px solid rgba(255,255,255,.09);
+    border-radius: 18px; padding: 30px 28px;
+  }
+  .tier.featured { border-color: rgba(255,170,29,.55); }
+  .tier .name { font-weight: 800; font-size: 18px; }
+  .tier .price { color: var(--amber); font-size: 32px; font-weight: 800; margin: 8px 0 2px; }
+  .tier .per { color: var(--slate); font-size: 13px; margin-bottom: 14px; }
+  .tier ul { list-style: none; }
+  .tier li { color: #C4D2DE; font-size: 14.5px; padding: 7px 0 7px 26px; position: relative;
+    border-top: 1px solid rgba(255,255,255,.07); }
+  .tier li::before { content: "→"; position: absolute; left: 0; color: var(--amber); }
+
+  .boundary {
+    background: var(--navy); border-block: 1px solid rgba(255,255,255,.08);
+  }
+  .boundary .inner { max-width: 860px; }
+  .boundary p { color: #C4D2DE; font-size: 16px; margin-bottom: 16px; }
+  .boundary p strong { color: var(--white); }
+
+  .steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; max-width: 1100px; }
+  .step { background: var(--navy-card); border-radius: 16px; padding: 24px; border: 1px solid rgba(255,255,255,.08); }
+  .step .n { color: var(--amber); font-weight: 800; font-size: 22px; }
+  .step h3 { font-size: 16px; margin: 6px 0 6px; }
+  .step p { color: var(--slate); font-size: 14px; }
+
+  .light { background: var(--paper); color: var(--navy); }
+  .light .band-sub { color: #5c6b78; }
+  .btn {
+    display: inline-block; padding: 14px 26px; border-radius: 12px;
+    font-weight: 700; font-size: 15px; background: var(--amber); color: var(--navy);
+  }
+  .cta-note { color: #5c6b78; font-size: 14px; margin-top: 14px; }
+
+  footer {
+    padding: 40px 6vw; border-top: 1px solid rgba(255,255,255,.08);
+    color: var(--slate); font-size: 14px;
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <img src="../assets/praxis-logo-monogram-300.png" alt="Praxis logo">
+  <span class="word">PRAXIS</span>
+  <span class="links">
+    <a href="../index.html">Home</a>
+    <a href="../products/">Products</a>
+    <a href="./" class="on">Consulting</a>
+    <a href="../papers/">Publishing</a>
+    <a href="../team/">Team</a>
+    <a href="../index.html#contact">Contact</a>
+  </span>
+</nav>
+
+<header class="page">
+  <div class="kicker">CONSULTING &middot; PRIVACY REMEDIATION</div>
+  <h1>The Digital Exposure Audit</h1>
+  <p class="sub">Somewhere right now, a people-search site is showing a name, home address,
+  phone number, relatives, and a map to the front door — to anyone with a search box.
+  For most people that's unsettling. For someone in a contested legal matter, a
+  high-conflict divorce, or a stalking situation, it's dangerous. Praxis finds every
+  place that data lives, scores it by real-world risk, and makes it go away — with a
+  real, named person handling it, not a faceless subscription.</p>
+</header>
+
+<section>
+  <h2 class="band-title">Who this is for</h2>
+  <p class="band-sub">Mass-market removal apps are automated and impersonal. Executive-protection
+  firms serve the Fortune 500 at enterprise prices. The middle is underserved: regional
+  professionals and genuinely at-risk individuals who are too small to be an enterprise
+  account. Praxis serves that middle — especially family-law, high-conflict-divorce, and
+  DV attorneys, and the clients their cases put at risk. Local, named, responsive, monthly.</p>
+
+  <h2 class="band-title">The Exposure Audit — fixed fee</h2>
+  <p class="band-sub">A one-time assessment of what is publicly findable about the subject:
+  data brokers, people-search sites, search results, exposed public records. Every finding
+  scored Low / Moderate / High by real-world risk, with a prioritized remediation roadmap.
+  Delivered as a branded written report within five business days.</p>
+  <div class="tiers">
+    <div class="tier">
+      <div class="name">Standard Audit</div>
+      <div class="price">$395</div>
+      <div class="per">one-time, fixed fee</div>
+      <ul>
+        <li>One individual</li>
+        <li>Full public-exposure map, severity-scored</li>
+        <li>Prioritized remediation roadmap</li>
+        <li>Written report in 5 business days</li>
+      </ul>
+    </div>
+    <div class="tier">
+      <div class="name">Comprehensive Audit</div>
+      <div class="price">$595</div>
+      <div class="per">one-time, fixed fee</div>
+      <ul>
+        <li>Individual plus household / immediate family</li>
+        <li>Everything in Standard, per person</li>
+        <li>Household-level risk picture</li>
+        <li>Clear recommendation: self-managed cleanup or Care Plan</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2 class="band-title">Care Plans — because removal is never permanent</h2>
+  <p class="band-sub">Data brokers re-list people every 30–90 days. Remediation is a
+  continuous practice, not a one-time fix — so the ongoing service is built around a
+  monthly cadence, branded reporting, and a real person who answers.</p>
+  <div class="tiers">
+    <div class="tier">
+      <div class="name">Essential</div>
+      <div class="price">$1,200<span style="font-size:16px">/yr</span></div>
+      <div class="per">about $100/month · one individual</div>
+      <ul>
+        <li>Continuous broker removal</li>
+        <li>Monthly monitoring</li>
+        <li>Quarterly branded report</li>
+      </ul>
+    </div>
+    <div class="tier featured">
+      <div class="name">Priority / At-Risk</div>
+      <div class="price">from $3,000<span style="font-size:16px">/yr</span></div>
+      <div class="per">about $250–300/month · household coverage</div>
+      <ul>
+        <li>Everything in Essential</li>
+        <li>Monthly reporting cadence</li>
+        <li>Priority, expedited response</li>
+        <li>Household / family coverage</li>
+        <li>A direct line — built for active high-conflict and stalking-risk situations</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="boundary">
+  <div class="inner">
+    <h2 class="band-title">The line we won't cross</h2>
+    <p>This service removes the data of <strong>consenting subjects</strong>. Every
+    engagement begins with a signed written authorization from the person whose data
+    we handle — audit or Care Plan, no exceptions.</p>
+    <p>What we will never do: research opposing parties, surveil anyone, or build
+    dossiers on people who haven't asked us to protect them. If an engagement drifts
+    toward investigating a third party, we decline it. A privacy company that snoops
+    for the right price isn't a privacy company — and <strong>sovereignty means the
+    same rules protect everyone</strong>, including the people on the other side of
+    your case.</p>
+  </div>
+</section>
+
+<section>
+  <h2 class="band-title">How it works</h2>
+  <div class="steps">
+    <div class="step"><div class="n">01</div><h3>Consult</h3><p>A short call about the
+    situation — who's at risk and how urgently.</p></div>
+    <div class="step"><div class="n">02</div><h3>Authorize</h3><p>The subject signs a
+    written authorization. No work begins without it.</p></div>
+    <div class="step"><div class="n">03</div><h3>Audit</h3><p>We map the public exposure
+    and deliver the scored report inside five business days.</p></div>
+    <div class="step"><div class="n">04</div><h3>Remediate</h3><p>Self-managed cleanup
+    with our roadmap — or a Care Plan that keeps you gone, month after month.</p></div>
+  </div>
+</section>
+
+<section class="light">
+  <h2 class="band-title">Start with the call</h2>
+  <p class="band-sub">Attorneys: we work through your firm and speak your client's language.
+  Individuals: you talk to the founder, not a queue.</p>
+  <a class="btn" href="mailto:hello@praxis-hq.ai?subject=Exposure%20Audit%20consultation">Book a consultation</a>
+  <p class="cta-note">Or call (646) 552-1700 — a real person answers.</p>
+</section>
+
+<footer>
+  &copy; 2026 Praxis LLC &middot; Orlando, FL &middot;
+  <a href="mailto:hello@praxis-hq.ai">hello@praxis-hq.ai</a>
+</footer>
+
+</body>
+</html>
