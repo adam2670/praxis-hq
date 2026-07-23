@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Roofing Expert — Carrier-Ready Inspection Reports | Praxis</title>
+<meta name="description" content="Carrier-ready roof inspection reports from your phone: GPS-stamped photo evidence, slope-by-slope damage counts, storm-weather corroboration, smart deductible math. $29.99/mo flat — no per-seat pricing. First 3 reports free.">
+<meta property="og:title" content="Roofing Expert — Carrier-Ready Inspection Reports">
+<meta property="og:description" content="GPS-stamped evidence, slope-by-slope counts, storm weather, deductible math — a branded PDF before you're off the roof. $29.99/mo flat. First 3 reports free.">
+<meta property="og:image" content="https://praxis-hq.ai/assets/praxis-og.png">
+<meta property="og:url" content="https://praxis-hq.ai/roofing/">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/png" href="../assets/praxis-logo-monogram-300.png">
+<style>
+  :root {
+    --navy: #122A40; --navy-deep: #0B1B2B; --navy-card: #16324C;
+    --amber: #FFAA1D; --paper: #F7F5F1; --slate: #8FA3B5; --white: #FFFFFF;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: "Avenir Next", Avenir, -apple-system, "Segoe UI", Roboto, sans-serif;
+    background: var(--navy-deep); color: var(--white); line-height: 1.6;
+  }
+  a { color: var(--amber); text-decoration: none; }
+  nav, section, footer, .hero { padding-inline: max(6vw, calc((100vw - 1180px) / 2)) !important; }
+
+  nav {
+    display: flex; align-items: center; gap: 14px;
+    padding: 14px 6vw; border-bottom: 1px solid rgba(255,255,255,.08);
+  }
+  nav img { width: 38px; height: 38px; border-radius: 9px; }
+  nav .word { font-weight: 800; letter-spacing: .22em; font-size: 16px; }
+  nav .tag { color: var(--slate); font-size: 13px; margin-left: 4px; }
+  nav .cta { margin-left: auto; }
+
+  .btn {
+    display: inline-block; padding: 15px 28px; border-radius: 12px;
+    font-weight: 800; font-size: 15px;
+  }
+  .btn.primary { background: var(--amber); color: var(--navy); }
+  .btn.ghost { border: 2px solid rgba(255,255,255,.25); color: var(--white); }
+  .btn.small { padding: 10px 18px; font-size: 13.5px; }
+
+  .hero {
+    display: flex; flex-wrap: wrap; align-items: center; justify-content: center;
+    gap: 6vw; padding-top: 60px; padding-bottom: 60px;
+    background: linear-gradient(135deg, var(--navy-deep) 0%, var(--navy) 55%, var(--navy-deep) 100%);
+  }
+  .hero-copy { max-width: 600px; }
+  .kicker { color: var(--amber); font-weight: 700; letter-spacing: .2em; font-size: 12.5px; }
+  h1 { font-size: clamp(32px, 4.6vw, 54px); font-weight: 800; line-height: 1.1; margin: 12px 0 18px; }
+  h1 .accent { color: var(--amber); }
+  .lede { color: var(--slate); font-size: 17.5px; }
+  .cta-row { margin-top: 28px; display: flex; gap: 14px; flex-wrap: wrap; align-items: center; }
+  .free-note { color: var(--slate); font-size: 13.5px; }
+
+  .demo {
+    width: min(560px, 92vw); border-radius: 18px; overflow: hidden;
+    border: 1px solid rgba(255,255,255,.14); box-shadow: 0 30px 80px rgba(0,0,0,.5);
+    background: #000;
+  }
+  .demo video { width: 100%; display: block; }
+
+  .stats {
+    display: flex; flex-wrap: wrap; gap: 16px 44px; justify-content: center;
+    padding-top: 30px; padding-bottom: 30px;
+    background: var(--navy-card); border-block: 1px solid rgba(255,255,255,.08);
+  }
+  .stat { text-align: center; }
+  .stat .n { font-size: 26px; font-weight: 800; color: var(--amber); }
+  .stat .l { font-size: 11.5px; font-weight: 700; letter-spacing: .1em; color: var(--slate); }
+
+  section { padding: 70px 6vw; }
+  .band-title { font-size: clamp(24px, 3vw, 36px); font-weight: 800; margin-bottom: 10px; }
+  .band-sub { color: var(--slate); max-width: 66ch; margin-bottom: 40px; }
+
+  .features { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
+  .feature {
+    background: var(--navy-card); border: 1px solid rgba(255,255,255,.08);
+    border-radius: 16px; padding: 24px 22px;
+  }
+  .feature h3 { font-size: 16.5px; margin-bottom: 6px; }
+  .feature h3 span { margin-right: 8px; }
+  .feature p { color: var(--slate); font-size: 14px; }
+
+  .light { background: var(--paper); color: var(--navy); }
+  .light .band-sub { color: #5c6b78; }
+
+  .compare-wrap { overflow-x: auto; }
+  table.compare {
+    border-collapse: collapse; width: 100%; min-width: 700px;
+    background: var(--white); border-radius: 16px; overflow: hidden;
+    box-shadow: 0 18px 50px rgba(18,42,64,.12);
+  }
+  .compare th, .compare td {
+    padding: 13px 16px; text-align: center; font-size: 14px;
+    border-bottom: 1px solid #E8E4DC;
+  }
+  .compare th { background: var(--navy); color: var(--white); font-size: 13.5px; }
+  .compare th:first-child, .compare td:first-child { text-align: left; font-weight: 700; }
+  .compare td.us { background: #FFF6E3; font-weight: 800; color: var(--navy); }
+  .compare .yes { color: #1E7B3C; font-weight: 800; }
+  .compare .no { color: #B4552D; }
+  .compare-note { color: #5c6b78; font-size: 12px; margin-top: 12px; }
+
+  .pa {
+    background: var(--navy); border-block: 1px solid rgba(255,255,255,.08);
+  }
+  .pa .inner { max-width: 860px; }
+  .pa p { color: #C4D2DE; font-size: 16.5px; margin-bottom: 16px; }
+  .pa p strong { color: var(--white); }
+
+  .pricing { text-align: center; }
+  .price-card {
+    display: inline-block; background: var(--navy-card);
+    border: 1.5px solid rgba(255,170,29,.5); border-radius: 20px;
+    padding: 36px 44px; margin-top: 8px;
+  }
+  .price-card .p { font-size: 44px; font-weight: 800; color: var(--amber); }
+  .price-card .per { color: var(--slate); font-size: 14px; }
+  .price-card ul { list-style: none; margin: 18px 0 24px; text-align: left; }
+  .price-card li { color: #C4D2DE; font-size: 14.5px; padding: 6px 0 6px 26px; position: relative; }
+  .price-card li::before { content: "✓"; position: absolute; left: 0; color: var(--amber); font-weight: 800; }
+
+  footer {
+    padding: 36px 6vw; border-top: 1px solid rgba(255,255,255,.08);
+    color: var(--slate); font-size: 13.5px;
+    display: flex; flex-wrap: wrap; gap: 12px; justify-content: space-between;
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <img src="../assets/praxis-logo-monogram-300.png" alt="Praxis logo">
+  <span class="word">ROOFING EXPERT</span>
+  <span class="tag">by Praxis</span>
+  <span class="cta"><a class="btn primary small" href="https://apps.apple.com/us/app/roofing-expert-roof-reports/id6788229872" target="_blank" rel="noopener">Get the App</a></span>
+</nav>
+
+<div class="hero">
+  <div class="hero-copy">
+    <div class="kicker">FOR ROOFING CONTRACTORS &amp; PUBLIC ADJUSTERS</div>
+    <h1>The carrier-ready roof report, <span class="accent">before you're off the roof.</span></h1>
+    <p class="lede">Built by a working inspector with three decades in tech: glove-friendly
+    slope-by-slope damage counts, GPS-stamped photo evidence, storm-weather corroboration,
+    automatic deductible math, and a branded PDF your desk adjuster can't argue with —
+    all on the phone already in your pocket.</p>
+    <div class="cta-row">
+      <a class="btn primary" href="https://apps.apple.com/us/app/roofing-expert-roof-reports/id6788229872" target="_blank" rel="noopener">Download on the App Store</a>
+      <span class="free-note">First 3 reports free &middot; no card required</span>
+    </div>
+  </div>
+  <div class="demo">
+    <video src="../assets/roofing-expert-solo.mp4" controls preload="none" poster="../assets/poster-roofing.jpg"></video>
+  </div>
+</div>
+
+<div class="stats">
+  <div class="stat"><div class="n">$29.99</div><div class="l">PER MONTH — FLAT</div></div>
+  <div class="stat"><div class="n">0</div><div class="l">PER-SEAT FEES</div></div>
+  <div class="stat"><div class="n">4</div><div class="l">APPLE PLATFORMS</div></div>
+  <div class="stat"><div class="n">100%</div><div class="l">WORKS OFFLINE</div></div>
+</div>
+
+<section>
+  <h2 class="band-title">Everything the carrier asks for. Nothing they can push back on.</h2>
+  <p class="band-sub">Every field in this app exists because an adjuster once used its absence
+  against a claim.</p>
+  <div class="features">
+    <div class="feature"><h3><span>📸</span>Evidence that holds up</h3>
+      <p>Every photo GPS-stamped and time-stamped into the file itself, tied to a required-shot
+      checklist. New: arrows-and-circles markup that never alters the original.</p></div>
+    <div class="feature"><h3><span>🧭</span>Slope-by-slope counts</h3>
+      <p>All eight facings — plus duplicates for complex roofs — with hail, wind, torn, and
+      mechanical counts, and hits-per-test-square in the adjuster's own units.</p></div>
+    <div class="feature"><h3><span>⌚</span>Count from your wrist</h3>
+      <p>The only roof app with a real Apple Watch companion: tally shingles with the Digital
+      Crown while your phone stays in the truck.</p></div>
+    <div class="feature"><h3><span>🌩</span>Storm-day receipts</h3>
+      <p>Pulls the recorded wind gusts and rainfall for the date of loss at that address —
+      corroboration printed right in the report.</p></div>
+    <div class="feature"><h3><span>🧮</span>Deductible math, done</h3>
+      <p>Percentage deductibles computed automatically — "2% of $425,000 = $8,500" printed on
+      the PDF. No more napkin math at the kitchen table.</p></div>
+    <div class="feature"><h3><span>📄</span>The PDF that closes</h3>
+      <p>Your letterhead, your license number, full damage tables, moisture readings, photo
+      appendix with coordinates — emailed to the desk adjuster in one tap.</p></div>
+  </div>
+</section>
+
+<section class="light">
+  <h2 class="band-title">The honest comparison</h2>
+  <p class="band-sub">The big platforms are fine at what they do — CRMs, measurements, photo
+  clouds. But for the inspection report itself, you're paying platform prices for a feature.</p>
+  <div class="compare-wrap">
+    <table class="compare">
+      <tr><th></th><th>Roofing Expert</th><th>iRoofing</th><th>CompanyCam</th><th>JobNimbus</th></tr>
+      <tr><td>Starting price</td><td class="us">$29.99/mo flat</td><td>~$149/mo</td><td>~$79–99/mo (3-user min.)</td><td>~$225+/mo base</td></tr>
+      <tr><td>Per-seat fees</td><td class="us"><span class="yes">None</span></td><td class="no">—</td><td class="no">Per user</td><td class="no">Per user</td></tr>
+      <tr><td>Carrier-ready inspection PDF</td><td class="us"><span class="yes">Core product</span></td><td>Add-on focus</td><td class="no">Photos only</td><td class="no">CRM focus</td></tr>
+      <tr><td>GPS/EXIF-stamped evidence</td><td class="us"><span class="yes">Yes</span></td><td>—</td><td><span class="yes">Yes</span></td><td>—</td></tr>
+      <tr><td>Storm-weather corroboration</td><td class="us"><span class="yes">Built in</span></td><td class="no">No</td><td class="no">No</td><td class="no">No</td></tr>
+      <tr><td>% deductible auto-math</td><td class="us"><span class="yes">Built in</span></td><td class="no">No</td><td class="no">No</td><td class="no">No</td></tr>
+      <tr><td>Apple Watch field tally</td><td class="us"><span class="yes">Yes</span></td><td class="no">No</td><td class="no">No</td><td class="no">No</td></tr>
+      <tr><td>Works fully offline</td><td class="us"><span class="yes">Yes</span></td><td>Partial</td><td class="no">Cloud-first</td><td class="no">Cloud-first</td></tr>
+      <tr><td>Your data collected/sold</td><td class="us"><span class="yes">Never — zero collection</span></td><td>Account required</td><td>Cloud account</td><td>Cloud account</td></tr>
+    </table>
+  </div>
+  <p class="compare-note">Competitor pricing from public sources, July 2026 — plans change;
+  verify with each vendor. Roofing Expert is an inspection-report tool, not a CRM or
+  measurement-ordering service — many crews run it alongside those.</p>
+</section>
+
+<section class="pa">
+  <div class="inner">
+    <h2 class="band-title">Public adjusters: the package is coming to you.</h2>
+    <p>Roofing Expert's <strong>Send to Public Adjuster</strong> exports the entire inspection
+    — every field, photo, GPS stamp, moisture reading, and signature — as one sealed,
+    evidence-complete file. <strong>ClaimForge</strong>, the PA-side companion now in
+    development, opens it into a claim you can actually work: nothing re-keyed, nothing
+    lost between the roof and your file.</p>
+    <p>Want early access to the PA side? <a href="mailto:hello@praxis-hq.ai?subject=ClaimForge%20early%20access">Get on the ClaimForge list.</a></p>
+  </div>
+</section>
+
+<section class="pricing">
+  <h2 class="band-title">One price. Unlimited reports. No seats.</h2>
+  <div class="price-card">
+    <div class="p">$29.99<span style="font-size:18px">/mo</span></div>
+    <div class="per">or $299.99/year — two months free</div>
+    <ul>
+      <li>Unlimited inspection reports</li>
+      <li>iPhone + iPad + Apple Watch + Mac included</li>
+      <li>Your branding on every PDF</li>
+      <li>First 3 reports free — try it on a real roof</li>
+      <li>Cancel anytime; your reports stay readable forever</li>
+    </ul>
+    <a class="btn primary" href="https://apps.apple.com/us/app/roofing-expert-roof-reports/id6788229872" target="_blank" rel="noopener">Start with 3 free reports</a>
+  </div>
+</section>
+
+<footer>
+  <span>Roofing Expert is built by <a href="../index.html">Praxis LLC</a> &middot; Orlando, FL</span>
+  <span><a href="mailto:hello@praxis-hq.ai">hello@praxis-hq.ai</a> &middot; (646) 552-1700</span>
+</footer>
+
+</body>
+</html>
