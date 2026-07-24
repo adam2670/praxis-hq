@@ -56,12 +56,22 @@
   .cta-row { margin-top: 28px; display: flex; gap: 14px; flex-wrap: wrap; align-items: center; }
   .free-note { color: var(--slate); font-size: 13.5px; }
 
-  .demo {
-    width: min(560px, 92vw); border-radius: 18px; overflow: hidden;
-    border: 1px solid rgba(255,255,255,.14); box-shadow: 0 30px 80px rgba(0,0,0,.5);
-    background: #000;
+  .demo-duo {
+    display: flex; gap: 16px; align-items: flex-start;
+    width: min(640px, 92vw);
   }
-  .demo video { width: 100%; display: block; }
+  .demo-duo figure { margin: 0; min-width: 0; }
+  .demo-duo figure.phone { flex: 500 0 0; }
+  .demo-duo figure.pad { flex: 812 0 0; }
+  .demo-duo video {
+    width: 100%; display: block; border-radius: 16px;
+    border: 1px solid rgba(255,255,255,.14);
+    box-shadow: 0 30px 80px rgba(0,0,0,.5); background: #000;
+  }
+  .demo-duo figcaption {
+    color: var(--slate); font-size: 12px; font-weight: 700;
+    letter-spacing: .08em; text-align: center; margin-top: 10px;
+  }
 
   .stats {
     display: flex; flex-wrap: wrap; gap: 16px 44px; justify-content: center;
@@ -153,8 +163,15 @@
       <span class="free-note">First 3 reports free &middot; no card required</span>
     </div>
   </div>
-  <div class="demo">
-    <video src="../assets/roofing-expert-solo.mp4" controls preload="none" poster="../assets/poster-roofing.jpg"></video>
+  <div class="demo-duo">
+    <figure class="phone">
+      <video src="../assets/roofing-demo-iphone.mp4" controls preload="none" poster="../assets/poster-roofing-iphone.jpg"></video>
+      <figcaption>iPHONE — IN THE FIELD</figcaption>
+    </figure>
+    <figure class="pad">
+      <video src="../assets/roofing-demo-ipad.mp4" controls preload="none" poster="../assets/poster-roofing-ipad.jpg"></video>
+      <figcaption>iPAD — AT THE DESK</figcaption>
+    </figure>
   </div>
 </div>
 
