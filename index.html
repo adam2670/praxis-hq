@@ -55,13 +55,44 @@
     gap: 6vw; padding: 72px 6vw 88px; min-height: 72vh;
     background: linear-gradient(135deg, var(--navy-deep) 0%, var(--navy) 55%, var(--navy-deep) 100%);
   }
-  #net { position: absolute; inset: 0; opacity: .65; }
-  .hero-copy { position: relative; max-width: 660px; text-align: center; }
+  #net { position: absolute; inset: 0; width: 100%; height: 100%; opacity: .7; }
+  .hero::after {
+    content: ""; position: absolute; inset: 0; pointer-events: none;
+    background: radial-gradient(ellipse 62% 48% at 50% 42%, rgba(255,170,29,.10), transparent 70%);
+  }
+  .hero-copy { position: relative; z-index: 1; max-width: 660px; text-align: center; }
   .hero-copy .lede { margin-inline: auto; }
   .hero-copy .cta-row { justify-content: center; }
   .kicker { color: var(--amber); font-weight: 700; letter-spacing: .22em; font-size: 13px; }
   h1 { font-size: clamp(38px, 5.2vw, 64px); font-weight: 800; line-height: 1.08; margin: 14px 0 20px; }
-  h1 .accent { color: var(--amber); }
+  h1 .accent { color: var(--amber); position: relative; display: inline-block; }
+  h1 .accent::after {
+    content: ""; position: absolute; left: 0; right: 0; bottom: .02em; height: 3px;
+    background: var(--amber); border-radius: 2px; transform: scaleX(0);
+    transform-origin: left; animation: draw .7s .9s ease forwards;
+  }
+  @keyframes draw { to { transform: scaleX(1); } }
+  .rise { opacity: 0; transform: translateY(18px); animation: rise .7s ease forwards; }
+  .rise.d1 { animation-delay: .05s; } .rise.d2 { animation-delay: .18s; }
+  .rise.d3 { animation-delay: .32s; } .rise.d4 { animation-delay: .46s; }
+  .rise.d5 { animation-delay: .62s; }
+  @keyframes rise { to { opacity: 1; transform: none; } }
+  .pledges {
+    margin-top: 30px; display: flex; gap: 10px; flex-wrap: wrap; justify-content: center;
+  }
+  .pledges span {
+    display: inline-flex; align-items: center; gap: 7px;
+    border: 1px solid rgba(255,170,29,.35); background: rgba(255,170,29,.07);
+    color: #E8DCC4; border-radius: 999px; padding: 8px 16px;
+    font-size: 13px; font-weight: 700; letter-spacing: .02em;
+  }
+  .pledges b { color: var(--amber); font-weight: 800; }
+  .reveal { opacity: 0; transform: translateY(22px); transition: opacity .7s ease, transform .7s ease; }
+  .reveal.in { opacity: 1; transform: none; }
+  @media (prefers-reduced-motion: reduce) {
+    .rise, .reveal { opacity: 1 !important; transform: none !important; animation: none !important; transition: none !important; }
+    h1 .accent::after { animation: none; transform: scaleX(1); }
+  }
   .lede { color: var(--slate); font-size: 18px; max-width: 52ch; }
   .cta-row { margin-top: 32px; display: flex; gap: 14px; flex-wrap: wrap; }
   .btn {
@@ -112,9 +143,12 @@
   .card {
     background: var(--navy-card); border: 1px solid rgba(255,255,255,.08);
     border-radius: 18px; padding: 30px 26px; display: block; color: var(--white);
-    transition: border-color .15s ease;
+    transition: border-color .2s ease, transform .2s ease, box-shadow .2s ease;
   }
-  .card:hover { border-color: rgba(255,170,29,.5); }
+  .card:hover {
+    border-color: rgba(255,170,29,.5); transform: translateY(-4px);
+    box-shadow: 0 18px 44px rgba(0,0,0,.35);
+  }
   .card svg { width: 44px; height: 44px; margin-bottom: 16px; }
   .card h3 { font-size: 19px; margin-bottom: 8px; }
   .card p { color: var(--slate); font-size: 15px; }
@@ -168,23 +202,29 @@
 <div class="hero">
   <canvas id="net"></canvas>
   <div class="hero-copy">
-    <div class="kicker">AI-NATIVE PRODUCT STUDIO</div>
-    <h1>Theory into <span class="accent">practice.</span></h1>
-    <p class="lede">Praxis is an AI-native product studio with a founding principle:
+    <div class="kicker rise d1">AI-NATIVE PRODUCT STUDIO &middot; DATA-SOVEREIGN BY DESIGN</div>
+    <h1 class="rise d2">Theory into <span class="accent">practice.</span></h1>
+    <p class="lede rise d3">Praxis is an AI-native product studio with a founding principle:
     use AI to build like a funded team — without surrendering your data, your methods,
     or your customers to someone else's platform.</p>
-    <div class="cta-row">
+    <div class="cta-row rise d4">
       <a class="btn primary" href="products/">Explore the products</a>
       <a class="btn ghost" href="consulting/">Book an exposure audit</a>
+    </div>
+    <div class="pledges rise d5">
+      <span><b>0</b> data collected — ever</span>
+      <span>On-device by design</span>
+      <span>No platform lock-in</span>
     </div>
   </div>
 </div>
 
 <div class="stats">
-  <div class="stat"><div class="n">1</div><div class="l">APP LIVE ON THE APP STORE</div></div>
-  <div class="stat"><div class="n">2</div><div class="l">MORE IN DEVELOPMENT</div></div>
-  <div class="stat"><div class="n">8</div><div class="l">PAPERS PUBLISHED</div></div>
-  <div class="stat"><div class="n">4</div><div class="l">APPLE PLATFORMS</div></div>
+  <div class="stat"><div class="n" data-count="0">0</div><div class="l">DATA COLLECTED — EVER</div></div>
+  <div class="stat"><div class="n" data-count="1">1</div><div class="l">APP LIVE ON THE APP STORE</div></div>
+  <div class="stat"><div class="n" data-count="2">2</div><div class="l">MORE IN DEVELOPMENT</div></div>
+  <div class="stat"><div class="n" data-count="8">8</div><div class="l">PAPERS PUBLISHED</div></div>
+  <div class="stat"><div class="n" data-count="4">4</div><div class="l">APPLE PLATFORMS</div></div>
 </div>
 
 <section class="mission" id="mission">
@@ -289,43 +329,73 @@
 
 <script>
 const cv = document.getElementById('net'), cx = cv.getContext('2d');
-let nodes = [];
+const still = matchMedia('(prefers-reduced-motion: reduce)').matches;
+let nodes = [], mouse = { x: .5, y: .42 };
 function sizeCanvas() {
   cv.width = cv.offsetWidth * devicePixelRatio;
   cv.height = cv.offsetHeight * devicePixelRatio;
   if (!nodes.length) {
-    for (let i = 0; i < 26; i++) nodes.push({
+    for (let i = 0; i < 54; i++) nodes.push({
       x: Math.random(), y: Math.random(),
-      vx: (Math.random() - .5) * .0006, vy: (Math.random() - .5) * .0006
+      vx: (Math.random() - .5) * .0007, vy: (Math.random() - .5) * .0007,
+      r: 1.4 + Math.random() * 1.6, warm: Math.random() < .55
     });
   }
 }
 sizeCanvas(); addEventListener('resize', sizeCanvas);
-(function tick() {
+cv.parentElement.addEventListener('pointermove', e => {
+  const b = cv.getBoundingClientRect();
+  mouse.x = (e.clientX - b.left) / b.width;
+  mouse.y = (e.clientY - b.top) / b.height;
+});
+function frame() {
   cx.clearRect(0, 0, cv.width, cv.height);
   const W = cv.width, H = cv.height;
   for (const n of nodes) {
-    n.x += n.vx; n.y += n.vy;
-    if (n.x < 0 || n.x > 1) n.vx *= -1;
-    if (n.y < 0 || n.y > 1) n.vy *= -1;
+    n.x += n.vx + (mouse.x - .5) * .00035;
+    n.y += n.vy + (mouse.y - .5) * .00035;
+    if (n.x < 0 || n.x > 1) { n.vx *= -1; n.x = Math.min(1, Math.max(0, n.x)); }
+    if (n.y < 0 || n.y > 1) { n.vy *= -1; n.y = Math.min(1, Math.max(0, n.y)); }
   }
   for (let i = 0; i < nodes.length; i++) {
     for (let j = i + 1; j < nodes.length; j++) {
       const a = nodes[i], b = nodes[j];
       const d = Math.hypot(a.x - b.x, a.y - b.y);
-      if (d < .22) {
-        cx.strokeStyle = `rgba(255,170,29,${(1 - d / .22) * .28})`;
+      if (d < .16) {
+        cx.strokeStyle = `rgba(255,170,29,${(1 - d / .16) * .22})`;
         cx.lineWidth = devicePixelRatio;
         cx.beginPath(); cx.moveTo(a.x * W, a.y * H); cx.lineTo(b.x * W, b.y * H); cx.stroke();
       }
     }
   }
   for (const n of nodes) {
-    cx.fillStyle = 'rgba(255,170,29,.75)';
-    cx.beginPath(); cx.arc(n.x * W, n.y * H, 2.2 * devicePixelRatio, 0, 7); cx.fill();
+    cx.fillStyle = n.warm ? 'rgba(255,170,29,.8)' : 'rgba(143,163,181,.55)';
+    cx.beginPath(); cx.arc(n.x * W, n.y * H, n.r * devicePixelRatio, 0, 7); cx.fill();
   }
-  requestAnimationFrame(tick);
-})();
+}
+if (still) { frame(); } else { (function tick() { frame(); requestAnimationFrame(tick); })(); }
+
+// Scroll reveal
+document.querySelectorAll('section, .founder').forEach(el => el.classList.add('reveal'));
+const io = new IntersectionObserver(es => es.forEach(e => {
+  if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+}), { threshold: .12 });
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+// Stat count-up
+const so = new IntersectionObserver(es => es.forEach(e => {
+  if (!e.isIntersecting) return;
+  so.unobserve(e.target);
+  const el = e.target, target = +el.dataset.count;
+  if (still || target === 0) { el.textContent = target; return; }
+  const t0 = performance.now(), dur = 900;
+  (function step(t) {
+    const p = Math.min(1, (t - t0) / dur);
+    el.textContent = Math.round(target * (1 - Math.pow(1 - p, 3)));
+    if (p < 1) requestAnimationFrame(step);
+  })(t0);
+}), { threshold: .6 });
+document.querySelectorAll('.stat .n[data-count]').forEach(el => so.observe(el));
 </script>
 </body>
 </html>
